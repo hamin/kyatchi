@@ -31,9 +31,7 @@
       li.button.download
         a(href='#')                                                   
           span Download
-          
-script(type='text/javascript')
-  var client = new Faye.Client("http://127.0.0.1:1080/kyatchi");
-  var currentEmail = client.subscribe('/current_email', function(email) {
-    alert(JSON.stringify(email));
-  });
+:coffeescript
+  client = new Faye.Client("http://127.0.0.1:1080/kyatchi")
+  currentEmail = client.subscribe '/current_email', (email) ->
+    alert JSON.stringify(email)

@@ -5,7 +5,8 @@
 
 var express = require('express'),
     faye = require('faye'),
-    smtp = require('smtp/lib/smtp');
+    smtp = require('smtp/lib/smtp'),
+    em_parse = require('./lib/parser_email');
 
 var app = module.exports = express.createServer();
 
@@ -40,22 +41,24 @@ var bayeux = new faye.NodeAdapter({
 
 smtp.createServer(function(connection) {
     connection.on('DATA', function(message) {
-       var emailContent = '';
+       // var emailContent = '';
+       var emailContent = [];
        console.log('Message from ' + message.sender)
        message.on('data', function(data) {
-          console.log("DATA: " + data)
+          // console.log("DATA: " + data)
           emailContent += data;
        })
        message.on('end', function() {
-          var email = { sender: connection.sender.address, recipients: connection.recipients, content: emailContent }
-          console.log('EOT')
-          // console.log('CONNECTION FOO')
-          // console.log(connection)
-          // console.log('EMAIL DATA')
-          // console.log(emailContent)
-          console.log('This is email object:')
-          console.log(email.sender)
-          bayeux.getClient().publish('/current_email', email);
+          console.log('EOT');
+
+          console.log('->->->->->->->->->->->->->->->->->->EMAIL DATA');
+
+          parser = em_parse.parser_email();
+          parser.setContent(emailContent);
+          foo = parser.parseMail();
+          console.log('=======');
+          console.log(foo.body);
+
           message.accept()
        })      
     })
