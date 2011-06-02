@@ -57,7 +57,7 @@ smtp.createServer(function(connection) {
           parser.setContent(emailContent);
           foo = parser.parseMail();
           console.log('=======');
-          console.log(foo.body);
+          console.log(foo.body[2].body);
 
           message.accept()
        })      
