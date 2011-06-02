@@ -32,26 +32,30 @@ app.configure('production', function(){
 // Faye
 
 var bayeux = new faye.NodeAdapter({
-    mount: '/kiyachi',
+    mount: '/kyatchi',
     timeout: 45
 });
 
 // Mails server
 
-
 smtp.createServer(function(connection) {
     connection.on('DATA', function(message) {
-       var email = '';
+       var emailContent = '';
        console.log('Message from ' + message.sender)
        message.on('data', function(data) {
           console.log("DATA: " + data)
-          email += data;
-          // bayeux.getClient().publish('/messages', {text: data});
+          emailContent += data;
        })
        message.on('end', function() {
+          var email = { sender: connection.sender.address, recipients: connection.recipients, content: emailContent }
           console.log('EOT')
-          console.log('EMAIL DATA')
-          console.log(email)
+          // console.log('CONNECTION FOO')
+          // console.log(connection)
+          // console.log('EMAIL DATA')
+          // console.log(emailContent)
+          console.log('This is email object:')
+          console.log(email.sender)
+          bayeux.getClient().publish('/current_email', email);
           message.accept()
        })      
     })
@@ -63,7 +67,7 @@ console.log("SMTP server running on port 1025")
 
 app.get('/', function(req, res){
   res.render('index', {
-    title: 'Mail Catcher'
+    title: 'Kyatchi - Catch the Mail!'
   });
 });
 
