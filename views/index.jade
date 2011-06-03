@@ -37,7 +37,8 @@ article#message
         li.button.download
           a(href='#')                                                   
             span Download
-          
+  iframe.body
+    
 :coffeescript
   client = new Faye.Client("http://127.0.0.1:1080/kyatchi")
   allMessages = []
@@ -46,7 +47,7 @@ article#message
   currentEmail = client.subscribe '/current_email', (message) ->
     allMessages.push(message)
     messageCount += 1
-    console.log message
+    console.log message.htmlContent
     $('#messages tbody').append \
       $('<tr />').attr('data-message-id', messageCount)
         .append($('<td/>').text(message.from))
@@ -64,4 +65,16 @@ article#message
     $('#message .metadata dd.from').text allMessages[selectedIndex].from
     $('#message .metadata dd.to').text allMessages[selectedIndex].to
     $('#message .metadata dd.subject').text allMessages[selectedIndex].subject
+    loadMessageBody()
+  
+  loadMessageBody = (id,format) ->
+      id ||= $('#messages tr.selected').attr 'data-message-id'
+      format ||= $('#message .views .tab.format.selected').attr 'data-message-format'
+      format ||= 'html'
+      
+      selectedIndex = id - 1
+      
+      if id?
+        $('#message iframe').attr "src", allMessages[selectedIndex].htmlContent
+    
         

@@ -55,11 +55,17 @@ smtp.createServer(function(connection) {
           foo = parser.parseMail();
           console.log('=======');
           // console.log(foo.body[2].body);
-          console.log(foo.header)
+          console.log(foo.body[2].body[0].content)
           
-          var currentEmail = {from: foo.header.from.value, to: foo.header.to.value, subject: foo.header.subject.value, created_at: foo.header.date.value}
-          console.log('@@@@ OUR OBJECT @@@@');
-          console.log(currentEmail);
+          var currentEmail = {
+            from: foo.header.from.value, 
+            to: foo.header.to.value, 
+            subject: foo.header.subject.value, 
+            created_at: foo.header.date.value,
+            htmlContent: foo.body[2].body[0].content
+            }
+          // console.log('@@@@ OUR OBJECT @@@@');
+          // console.log(currentEmail);
           bayeux.getClient().publish('/current_email', currentEmail);
 
           message.accept()
