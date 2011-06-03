@@ -1,37 +1,49 @@
-#mail
-  table
-    thead
-      th From
-      th To
-      th Subject
-      th Received
-    tbody
-#message
-  .metadata
-    .received
-      label Received
-      span
-    .from
-      label From
-      span
-    .to
-      label To
-      span
-    .subject
-      label Subject
-      span
-    .attachments
-      label Attachments
-      ul
-  .actions
+header
+  h1 
+    a(href='http://github.com/hamin', target ='_blank') Kyatchi
+  nav.app
     ul
-      li.format.tab.html.selected(data-message-format='html') HTML
-      li.format.tab.plain(data-message-format='plain') Plain Text
-      li.format.tab.source(data-message-format='source') Source
-      li.button.download
-        a(href='#')                                                   
-          span Download
+      li.clear 
+        a(href='#', target ='Clear all messages') Clear
+      li.quit 
+        a(href='#', target ='Quit Kyatchi') Quit
+nav#messages
+        table
+          thead
+            th From
+            th To
+            th Subject
+            th Received
+          tbody
+article#message
+  header
+    dl.metadata
+      dt.created_at Received
+      dd.created_at
+      dt.from From
+      dd.from
+      dt.to To
+      dd.to
+      dt.subject Subject
+      dd.subject
+      dt.attachments Attachments
+      dd.attachments
+        ul
+    nav.views
+      ul
+        li.format.tab.html.selected(data-message-format='html') HTML
+        li.format.tab.plain(data-message-format='plain') Plain Text
+        li.format.tab.source(data-message-format='source') Source
+        li.button.download
+          a(href='#')                                                   
+            span Download
+          
 :coffeescript
   client = new Faye.Client("http://127.0.0.1:1080/kyatchi")
-  currentEmail = client.subscribe '/current_email', (email) ->
-    alert JSON.stringify(email)
+  currentEmail = client.subscribe '/current_email', (message) ->
+    console.log message
+    $('#messages tbody').append \
+      $('<tr />').attr('data-message-id', 'message-123')
+        .append($('<td/>').text(message.from))
+        .append($('<td/>').text(message.subject))
+        .append($('<td/>').text(message.created_at))

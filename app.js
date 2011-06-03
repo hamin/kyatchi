@@ -50,14 +50,17 @@ smtp.createServer(function(connection) {
        })
        message.on('end', function() {
           console.log('EOT');
-
-          console.log('->->->->->->->->->->->->->->->->->->EMAIL DATA');
-
           parser = em_parse.parser_email();
           parser.setContent(emailContent);
           foo = parser.parseMail();
           console.log('=======');
-          console.log(foo.body[2].body);
+          // console.log(foo.body[2].body);
+          console.log(foo.header)
+          
+          var currentEmail = {from: foo.header.from.value, to: foo.header.to.value, subject: foo.header.subject.value, created_at: foo.header.date.value}
+          console.log('@@@@ OUR OBJECT @@@@');
+          console.log(currentEmail);
+          bayeux.getClient().publish('/current_email', currentEmail);
 
           message.accept()
        })      
