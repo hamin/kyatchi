@@ -56,7 +56,10 @@ article#message
         .append($('<td/>').text(message.created_at))
   
   $('#messages tr').live 'click', (e) =>
-    selectedId = $(e.currentTarget).attr('data-message-id')
+    loadMessage $(e.currentTarget).attr('data-message-id')
+  
+  loadMessage = (id) ->
+    selectedId = id
     selectedIndex = selectedId - 1
     $('#messages tbody tr:not([data-message-id="'+selectedId+'"])').removeClass 'selected'
     $('#messages tbody tr[data-message-id="'+selectedId+'"]').addClass 'selected'

@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -62,7 +61,8 @@ smtp.createServer(function(connection) {
             to: foo.header.to.value, 
             subject: foo.header.subject.value, 
             created_at: foo.header.date.value,
-            htmlContent: foo.body[2].body[0].content
+            htmlContent: foo.body[2].body[0].content,
+            textContent: foo.body[1].body[0].content
             }
           // console.log('@@@@ OUR OBJECT @@@@');
           // console.log(currentEmail);
