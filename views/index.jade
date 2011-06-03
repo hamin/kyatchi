@@ -40,10 +40,24 @@ article#message
           
 :coffeescript
   client = new Faye.Client("http://127.0.0.1:1080/kyatchi")
+  allMessages = []
+  messageCount = 0
+  
   currentEmail = client.subscribe '/current_email', (message) ->
+    allMessages.push(message)
+    messageCount += 1
     console.log message
     $('#messages tbody').append \
-      $('<tr />').attr('data-message-id', 'message-123')
+      $('<tr />').attr('data-message-id', messageCount)
         .append($('<td/>').text(message.from))
+        .append($('<td/>').text(message.to))
         .append($('<td/>').text(message.subject))
         .append($('<td/>').text(message.created_at))
+  
+  $('#messages tr').live 'click', (e) =>
+    selectedId = $(e.currentTarget).attr('data-message-id') - 1
+    $('#message .metadata dd.created_at').text allMessages[selectedId].created_at
+    $('#message .metadata dd.from').text allMessages[selectedId].from
+    $('#message .metadata dd.to').text allMessages[selectedId].to
+    $('#message .metadata dd.subject').text allMessages[selectedId].subject            
+        
