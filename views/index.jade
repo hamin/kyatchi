@@ -55,9 +55,13 @@ article#message
         .append($('<td/>').text(message.created_at))
   
   $('#messages tr').live 'click', (e) =>
-    selectedId = $(e.currentTarget).attr('data-message-id') - 1
-    $('#message .metadata dd.created_at').text allMessages[selectedId].created_at
-    $('#message .metadata dd.from').text allMessages[selectedId].from
-    $('#message .metadata dd.to').text allMessages[selectedId].to
-    $('#message .metadata dd.subject').text allMessages[selectedId].subject            
+    selectedId = $(e.currentTarget).attr('data-message-id')
+    selectedIndex = selectedId - 1
+    $('#messages tbody tr:not([data-message-id="'+selectedId+'"])').removeClass 'selected'
+    $('#messages tbody tr[data-message-id="'+selectedId+'"]').addClass 'selected'
+    
+    $('#message .metadata dd.created_at').text allMessages[selectedIndex].created_at
+    $('#message .metadata dd.from').text allMessages[selectedIndex].from
+    $('#message .metadata dd.to').text allMessages[selectedIndex].to
+    $('#message .metadata dd.subject').text allMessages[selectedIndex].subject
         
