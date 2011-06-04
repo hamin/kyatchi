@@ -40,11 +40,9 @@ var bayeux = new faye.NodeAdapter({
 
 smtp.createServer(function(connection) {
     connection.on('DATA', function(message) {
-       // var emailContent = '';
-       var emailContent = [];
+       var emailContent = '';
        console.log('Message from ' + message.sender)
        message.on('data', function(data) {
-          // console.log("DATA: " + data)
           emailContent += data;
        })
        message.on('end', function() {
@@ -53,19 +51,18 @@ smtp.createServer(function(connection) {
           parser.setContent(emailContent);
           foo = parser.parseMail();
           console.log('=======');
-          // console.log(foo.body[2].body);
-          console.log(foo.body[2].body[0].content)
           
           var currentEmail = {
             from: foo.header.from.value, 
             to: foo.header.to.value, 
             subject: foo.header.subject.value, 
             created_at: foo.header.date.value,
-            htmlContent: foo.body[2].body[0].content,
-            textContent: foo.body[1].body[0].content
+            content: {
+              text: foo.body[1].body[0].content,
+              html: foo.body[2].body[0].content,
+              raw: emailContent
+              }
             }
-          // console.log('@@@@ OUR OBJECT @@@@');
-          // console.log(currentEmail);
           bayeux.getClient().publish('/current_email', currentEmail);
 
           message.accept()
