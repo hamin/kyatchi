@@ -51,6 +51,8 @@ smtp.createServer(function(connection) {
           parser.setContent(emailContent);
           foo = parser.parseMail();
           console.log('=======');
+          console.log("THIS IS PLAIN:")
+          console.log(foo.body[1].body[0].content)
           
           var currentEmail = {
             from: foo.header.from.value, 
@@ -58,9 +60,9 @@ smtp.createServer(function(connection) {
             subject: foo.header.subject.value, 
             created_at: foo.header.date.value,
             content: {
-              text: foo.body[1].body[0].content,
+              plain: foo.body[1].body[0].content,
               html: foo.body[2].body[0].content,
-              raw: emailContent
+              source: emailContent
               }
             }
           bayeux.getClient().publish('/current_email', currentEmail);

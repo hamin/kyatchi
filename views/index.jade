@@ -57,6 +57,9 @@ article#message
   
   $('#messages tr').live 'click', (e) =>
     loadMessage $(e.currentTarget).attr('data-message-id')
+    
+  $('#message .views .tab').live 'click', (e) =>
+    loadMessageBody $('#messages tr.selected').attr('data-message-id'), $(e.currentTarget).attr 'data-message-format'  
   
   loadMessage = (id) ->
     selectedId = id
@@ -79,6 +82,7 @@ article#message
       
       if id?
         content = $(allMessages[selectedIndex].content[format])
+        content = allMessages[selectedIndex].content[format] unless format is 'html'
         $('#message div.body').html content
     
         
