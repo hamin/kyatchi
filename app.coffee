@@ -35,25 +35,23 @@ smtp.createServer (connection) ->
       emailContent += data
     
     message.on 'end', () ->
-      
       parser = em_parse.parser_email()
       parser.setContent emailContent
-      foo = parser.parseMail()
+      parsedEmail = parser.parseMail()
       
       currentEmail = {
-        from: foo.header.from.value, 
-        to: foo.header.to.value, 
-        subject: foo.header.subject.value, 
-        created_at: foo.header.date.value,
+        from: parsedEmail.header.from.value, 
+        to: parsedEmail.header.to.value, 
+        subject: parsedEmail.header.subject.value, 
+        created_at: parsedEmail.header.date.value,
         content: {
-            plain: foo.body[1].body[0].content,
-            html: foo.body[2].body[0].content,
+            plain: parsedEmail.body[1].body[0].content,
+            html: parsedEmail.body[2].body[0].content,
             source: emailContent
           }
       }
       
       bayeux.getClient().publish '/current_email', currentEmail
-      
       message.accept()
 .listen(1025)
 
