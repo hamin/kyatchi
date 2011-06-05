@@ -59,7 +59,15 @@ article#message
     loadMessage $(e.currentTarget).attr('data-message-id')
     
   $('#message .views .tab').live 'click', (e) =>
-    loadMessageBody $('#messages tr.selected').attr('data-message-id'), $(e.currentTarget).attr 'data-message-format'  
+    loadMessageBody $('#messages tr.selected').attr('data-message-id'), $(e.currentTarget).attr 'data-message-format'
+    
+  $('nav.app .clear a').live 'click', (e) =>
+    if confirm "You will lose all your received messages.\n\nAre you sure you want to clear all messages?"
+      allMessages = []
+      messageCount = 0
+      $('#messages tbody').empty()
+      $('#message .metadata dd').empty()
+      $('#message div.body').empty()
   
   loadMessage = (id) ->
     selectedId = id
