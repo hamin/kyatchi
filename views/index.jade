@@ -55,8 +55,7 @@ article#message
         .append($('<td/>').text(message.subject))
         .append($('<td/>').text(message.created_at))
   
-  $('#messages tr').live 'click', (e) =>
-    loadMessage $(e.currentTarget).attr('data-message-id')
+  $('#messages tr').live 'click', (e) => loadMessage $(e.currentTarget).attr('data-message-id')
     
   $('#message .views .tab').live 'click', (e) =>
     loadMessageBody $('#messages tr.selected').attr('data-message-id'), $(e.currentTarget).attr 'data-message-format'

@@ -15,11 +15,7 @@ app.configure () ->
   app.use app.router
   app.use express.static("#{__dirname}/public")
     
-app.configure () ->
-  app.use express.errorHandler({ dumpExceptions: true, showStack: true})
-
-app.configure () ->
-  app.use express.errorHandler()
+app.configure () -> app.use express.errorHandler({ dumpExceptions: true, showStack: true})
 
 # Faye
 
@@ -59,8 +55,7 @@ console.log "SMTP server running on port 1025"
 
 # Routes
 
-app.get '/', (req,res) ->
-  res.render 'index', title: 'Kyatchi - Catch the Mail!'
+app.get '/', (req,res) -> res.render 'index', title: 'Kyatchi - Catch the Mail!'
   
 # Only listen on $ node app.coffee
 if !module.parent
