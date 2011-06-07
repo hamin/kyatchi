@@ -13,6 +13,7 @@ app.configure () ->
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
+  app.use express.compiler( src: __dirname + '/public', dest: __dirname + '/public', enable: ['coffeescript'] )
   app.use express.static("#{__dirname}/public")
     
 app.configure () -> app.use express.errorHandler({ dumpExceptions: true, showStack: true})
@@ -56,6 +57,12 @@ console.log "SMTP server running on port 1025"
 # Routes
 
 app.get '/', (req,res) -> res.render 'index', title: 'Kyatchi - Catch the Mail!'
+
+app.get '/download/:id', (req,res) ->
+  console.log req.params
+  email = req.params.email
+  
+  res.send email, {"content-type": "message/rfc822"}, 200
   
 # Only listen on $ node app.coffee
 if !module.parent
