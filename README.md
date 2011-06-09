@@ -44,6 +44,7 @@ Doesn't matter what programming language/framework you're using. If it uses smtp
 
 * Fix Email download, currently line breaks aren't being persisted
 * Add support for Attachments
+* Add ability to specify smtp and web interface ports through command line interface
 * Growl support.
 
 ## Thanks
