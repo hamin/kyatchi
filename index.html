@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<head>
-  <meta charset='utf-8'>
-
-  <title>hamin/kyatchi @ GitHub</title>
-
-  <style type="text/css">
-    body {
+  <head>
+    <meta charset='utf-8'>
+    <title>
+      hamin/kyatchi @ GitHub
+    </title>
+    <style type="text/css">
+body {
       margin-top: 1.0em;
       background-color: #eeeeee;
       font-family: Helvetica, Arial, FreeSans, san-serif;
@@ -15,6 +15,28 @@
     #container {
       margin: 0 auto;
       width: 700px;
+    }
+    #logo {
+      padding-top:10px;
+      padding-left:15px;
+    }
+    
+    .sharing {
+/*      position: absolute;
+      top: 112px;
+      left: 180px;*/
+    }
+    .sharing iframe {
+    	margin: 0;  
+    	display:inline-block;
+    }    
+
+    .sharing iframe#facebook_like{
+      margin-left:-5px;   
+      padding-top:2px;
+    }
+    .twitter-share-button {
+    	margin-top: -2px !important;
     }
     h1 { font-size: 3.8em; color: #111111; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
@@ -26,81 +48,136 @@
     .download { float: right; }
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
-
-<body>
-  <a href="http://github.com/hamin/kyatchi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/hamin/kyatchi/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/hamin/kyatchi/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/hamin/kyatchi">kyatchi</a>
-      <span class="small">by <a href="http://github.com/hamin">hamin</a></span></h1>
-
-    <div class="description">
-      Catch the Mail!
-    </div>
-
-    <p>Don't worry about the local emails...:)</p><h2>Dependencies</h2>
-<p>nodejs
-coffee-script
-expressjs
-jade
-smtp</p>
-<h2>Install</h2>
-<p>npm install kyatchi</p>
-<h2>License</h2>
-<p>Copyright (c) 2011 Haris Amin
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-<h2>Authors</h2>
-<p>Haris Amin (aminharis7@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Haris Amin (aminharis7@gmail.com)<br/>      </p>
-
-
-    <h2>Download</h2>
+    .footer { text-align:center; padding-top:30px; font-style: italic; font-weight:bold; }
+    </style>
+  </head>
+  <body>
     <p>
-      You can download this project in either
-      <a href="http://github.com/hamin/kyatchi/zipball/master">zip</a> or
-      <a href="http://github.com/hamin/kyatchi/tarball/master">tar</a> formats.
+      <a href="http://github.com/hamin/kyatchi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/hamin/kyatchi</pre>
-    </p>
+    <div id="container">
+      <!-- by <a href="http://github.com/hamin">Haris Amin</a> -->
+      <h1>
+        <a href="http://github.com/hamin/kyatchi">kyatchi</a>  <span class="small">Catch the mail!</span>
+        <div id="logo">
+          <img src="https://github.com/hamin/kyatchi/raw/master/public/images/kyatchi-logo.png" alt="Catch the mail!" />
+          <span class="sharing">
+  					<div style="padding-top:2px;display:inline-block">
+              <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-url="http://hamin.github.com/kyatchi/" data-text="Kyatchi lets me see my app's email in development!" data-via="harisamin">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/hamin/kyatchi">hamin/kyatchi</a>
+              <iframe src="http://www.facebook.com/plugins/like.php?http%3A%2F%2Fhamin.github.com%2Fkyatchi&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+          </span>
+        </div>
+        
+      </h1>
+      <p>
+        Kyatchi <strong><em>(キャッチ catch)</em></strong> is a light NodeJS port of <a href="https://github.com/sj26/mailcatcher">Mailcatcher</a>. Kyatchi is written on top of the super simple Sinatra-like web framework for NodeJS, <a href="http://expressjs.com/">ExpressJS</a>. The server and client-side javascript is all written in Coffeescript.
+      </p>
+      <p>
+        Like <a href="https://github.com/sj26/mailcatcher">Mailcatcher</a> Kyatchi runs a super simple SMTP server which catches any message sent to it to display in a web interface. Run Kyatchi, set your favorite app to deliver to <a href="smtp://127.0.0.1:1025">smtp://127.0.0.1:1025</a> instead of your default SMTP server, then check out <a href="http://127.0.0.1:1080">http://127.0.0.1:1080</a> to see the mail that’s arrived so far.
+      </p>
+      <p>
+        Kyatchi also sends new messages to the web interface through <a href="http://www.whatwg.org/specs/web-socket-protocol/">WebSockets</a> <strong>with failover support for ANY browser that doesn’t support Websockets</strong>. This is done through the power of the awesome and simple pub/sub library <a href="http://faye.jcoglan.com/">Faye</a>.
+      </p><!-- ![Kyatchi screenshot]() -->
+      <h2 id="features">
+        Features
+      </h2>
+      <ul>
+        <li>Catches all mail and stores it for display.
+        </li>
+        <li>Shows HTML, Plain Text and Source version of messages, as applicable.
+        </li>
+        <li>Mail appears instantly <strong>on any browser</strong>.
+        </li>
+        <li>Runs as a daemon run in the background.
+        </li>
+        <li>Written super-simply in on top of <a href="http://expressjs.com/">ExpressJS</a> via Coffeescript, very easy to change.
+        </li>
+      </ul>
+      <h2 id="how">
+        How
+      </h2>
+      <ol>
+        <li>
+          <code>npm install kyatchi</code>
+        </li>
+        <li>
+          <code>kyatchi</code>
+        </li>
+        <li>Go to http://localhost:1080/
+        </li>
+        <li>Send mail through smtp://localhost:1025
+        </li>
+      </ol>
+      <p>
+        The source is simple and <a href="http://github.com/hamin/kyatchi/">available on GitHub</a>.
+      </p>
+      <h3 id="rails">
+        Rails
+      </h3>
+      <p>
+        To set up your rails app, I recommend adding this to your <code>environment/development.rb</code>:
+      </p>
+      <pre>
+<code>config.action_mailer.delivery_method = :smtp
+      config.action_mailer.smtp_settings = { :host =&gt; "localhost", :port =&gt; 1025 }
+      </code>
+</pre>
+      <h3 id="anything_else">
+        ANYTHING ELSE!
+      </h3>
+      <p>
+        Doesn’t matter what programming language/framework you’re using. If it uses smtp to send messages, then Kyatchi will work for you!
+      </p>
+      <h2 id="caveats">
+        Caveats
+      </h2>
+      <ul>
+        <li>Email download needs work.
+        </li>
+      </ul>
+      <h2 id="todo">
+        TODO
+      </h2>
+      <ul>
+        <li>Fix Email download, currently line breaks aren’t being persisted
+        </li>
+        <li>Add support for Attachments
+        </li>
+        <li>Add ability to specify smtp and web interface ports through command line interface
+        </li>
+        <li>Growl support.
+        </li>
+      </ul>
+      <h2 id="thanks">
+        Thanks
+      </h2>
+      <p>
+        I was surprised how quickly I was able to get Kyatchi up and running. We definitely have some very powerful tools at our fingertips right now. A big thanks to all of the authors/contributors of the whole stack used in Kyatchi. I would also like to thank the following people:
+      </p>
+      <ul>
+        <li>
+          <a href="https://github.com/sj26">Samuel Cochran</a> - Thanks for writing and open sourcing <a href="https://github.com/sj26/mailcatcher">Mailcatcher</a>. It was definitely the inspiration I needed. (Hope you don’t mind me borrowing your styling :) )
+        </li>
+        <li>
+          <a href="https://github.com/aredridel">Aria Stewart</a> - Thanks for your awesome and simple <a href="http://github.com/aredridel/node-smtp">SMTP library</a>. And thanks for suggesting the name for this project :)
+        </li>
+        <li>
+          <a href="https://github.com/ljxia">Leejay (Liangjie Xia)</a> - Thanks for helping me debug some of the smtp parsing
+        </li>
+        <li>
+          <a href="https://github.com/drewtempelmeyer">Drew Tempelmeyer</a> - Thanks for the awesome logo!
+        </li>
+      </ul>
+      <h2 id="donations">
+        Donations
+      </h2>
+      <p>
+        I started this project because I’ve been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of cofee, soda, or some nourishment by <a href="donate">donating via Amazon Payments</a>.
+      </p>
+      <div class="footer">
+       <a href="http://github.com/hamin/kyatchi">kyatchi</a> &copy; 2011 <a href="http://github.com/hamin">Haris Amin</a>. Released under the <a href="https://raw.github.com/hamin/kyatchi/master/LICENSE">MIT License</a>
+      </div>
     </div>
-
-  </div>
-
-  
-</body>
+  </body>
 </html>
