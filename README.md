@@ -56,11 +56,11 @@ I was surprised how quickly I was able to get Kyatchi up and running. We definit
 * [Samuel Cochran][sam] - Thanks for writing and open sourcing [Mailcatcher][mailcatcher-github]. It was definitely the inspiration I needed. (Hope you don't mind me borrowing your styling :) )
 * [Aria Stewart][aria] - Thanks for your awesome and simple [SMTP library][smtp-lib]. And thanks for suggesting the name for this project :)
 * [Leejay (Liangjie Xia)][leejay] - Thanks for helping me debug some of the smtp parsing
-* [Drew Tempelmeyer][drew] - Thanks for the awesome logo!
+* [Drew Tempelmeyer] - Thanks for the awesome logo!
 
 ## Donations
 
-I started this project because I've been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of coffee, soda, or some nourishment by [donating via Amazon Payments](donate).
+I started this project because I've been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of coffee, soda, or some nourishment by [donating via Amazon Payments][donate].
 
 ## License
 
@@ -80,3 +80,4 @@ Copyright (c) 2011 Haris Amin (aminharis7@gmail.com). Released under the MIT Lic
   [drew]: https://github.com/drewtempelmeyer
   [http]: http://localhost:1080/
   [smtp]: smtp://localhost:1025
+  [donate]: http://hamin.github.com/kyatchi/#donate
