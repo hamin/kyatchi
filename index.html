@@ -42,11 +42,11 @@ body {
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
     h2 { font-size: 1.5em; color: #111111; }
-    h3 { text-align: center; color: #111111; }
+    h3 { text-align: color: #111111; }
     a { color: #111111; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
+    pre { background: #000; color: #fff; padding-left:0px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; font-weight:bold; }
     </style>
@@ -68,8 +68,37 @@ body {
               <iframe src="http://www.facebook.com/plugins/like.php?http%3A%2F%2Fhamin.github.com%2Fkyatchi&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
           </span>
         </div>
-        
       </h1>
+
+        <div id="donate" style="width:20em;padding-left:10px;padding-top:10px;padding-right:10px;padding-bottom:10px;">
+        	<table class="table" border="0" cellpadding="0" cellspacing="0" width="100%">
+        	<tr>
+        	<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post">
+        	  <input type="hidden" name="immediateReturn" value="1" >
+        	  <input type="hidden" name="collectShippingAddress" value="0" >
+        	  <input type="hidden" name="signatureVersion" value="2" >
+        	  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
+        	  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
+        	  <input type="hidden" name="referenceId" value="e.g. MyTransacthttp://hamin.github.com/kyatchiion-001" >
+        	  <input type="hidden" name="signature" value="IXsu9jhbHb2+1LEnU5u+qpodUrOrazP/9y/DKGFFMwQ=" >
+        	  <input type="hidden" name="isDonationWidget" value="1" >
+        	  <input type="hidden" name="description" value="Donate to Kyatchi an Open Source Project to help app development with local emails" >
+        	  <input type="hidden" name="amazonPaymentsAccountId" value="ABDCDVQDQZJW67IQXEG65L82KPG6EL2MLN7K1Z" >
+        	  <input type="hidden" name="ipnUrl" value="http://hamin.github.com/kyatchi" >
+        	  <input type="hidden" name="returnUrl" value="http://hamin.github.com/kyatchi" >
+        	  <input type="hidden" name="processImmediate" value="1" >
+        	  <input type="hidden" name="cobrandingStyle" value="logo" >
+        	  <input type="hidden" name="abandonUrl" value="http://hamin.github.com/kyatchi" >
+
+        	<td>$&nbsp;
+        	<input type="text" name="amount" size="8" 
+        		value=""></td>
+        	<td>&nbsp;</td>  
+        	<td><input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_donate_withmsg_whitebg.gif" border="0"></td>
+        	</form>
+        	</tr>
+        	</table>
+        	</div>
       <p>
         Kyatchi <strong><em>(キャッチ catch)</em></strong> is a light NodeJS port of <a href="https://github.com/sj26/mailcatcher">Mailcatcher</a>. Kyatchi is written on top of the super simple Sinatra-like web framework for NodeJS, <a href="http://expressjs.com/">ExpressJS</a>. The server and client-side javascript is all written in Coffeescript.
       </p>
@@ -102,7 +131,7 @@ body {
           <code>npm install kyatchi</code>
         </li>
         <li>
-          <code>kyatchi</code>
+          <code>npm start kyatchi</code>
         </li>
         <li>Go to <a href="http://127.0.0.1:1080">http://127.0.0.1:1080</a>
         </li>
@@ -119,10 +148,11 @@ body {
         To set up your rails app, I recommend adding this to your <code>environment/development.rb</code>:
       </p>
       <pre>
-<code>config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = { :host =&gt; "localhost", :port =&gt; 1025 }
+      <code style="padding-left:0px">
+        config.action_mailer.delivery_method = :smtp
+        config.action_mailer.smtp_settings = { :host =&gt; "localhost", :port =&gt; 1025 }
       </code>
-</pre>
+      </pre>
       <h3 id="anything_else">
         ANYTHING ELSE!
       </h3>
@@ -173,7 +203,7 @@ body {
         Donations
       </h2>
       <p>
-        I started this project because I’ve been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of cofee, soda, or some nourishment by <a href="donate">donating via Amazon Payments</a>.
+        I started this project because I’ve been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of cofee, soda, or some nourishment by <a href="#donate">donating via Amazon Payments</a>.
       </p>
       <div class="footer">
        <a href="http://github.com/hamin/kyatchi">kyatchi</a> &copy; 2011 <a href="http://github.com/hamin">Haris Amin</a>. Released under the <a href="https://raw.github.com/hamin/kyatchi/master/LICENSE">MIT License</a>
