@@ -4,7 +4,7 @@
 
 Kyatchi **_(キャッチ catch)_** is a light NodeJS port of [Mailcatcher][mailcatcher-github]. Kyatchi is written on top of the super simple Sinatra-like web framework for NodeJS, [ExpressJS][expressjs]. The server and client-side javascript is all written in Coffeescript.
 
-Like [Mailcatcher][mailcatcher-github] Kyatchi runs a super simple SMTP server which catches any message sent to it to display in a web interface. Run Kyatchi, set your favorite app to deliver to smtp://127.0.0.1:1025 instead of your default SMTP server, then check out http://127.0.0.1:1080 to see the mail that's arrived so far. 
+Like [Mailcatcher][mailcatcher-github] Kyatchi runs a super simple SMTP server which catches any message sent to it to display in a web interface. Run Kyatchi, set your favorite app to deliver to [smtp://127.0.0.1:1025][smtp] instead of your default SMTP server, then check out [http://127.0.0.1:1080][http] to see the mail that's arrived so far. 
 
 Kyatchi also sends new messages to the web interface through [WebSockets][websockets] **with failover support for ANY browser that doesn't support Websockets**. This is done through the power of the awesome and simple pub/sub library [Faye][faye].
 
@@ -21,9 +21,9 @@ Kyatchi also sends new messages to the web interface through [WebSockets][websoc
 ## How
 
 1. `npm install kyatchi`
-2. `kyatchi`
-3. Go to http://localhost:1080/
-4. Send mail through smtp://localhost:1025
+2. `npm start kyatchi`
+3. Go to [http://localhost:1080/][http]
+4. Send mail through [smtp://localhost:1025][smtp]
 
 The source is simple and [available on GitHub][kyatchi-github].
 
@@ -78,4 +78,5 @@ Copyright (c) 2011 Haris Amin (aminharis7@gmail.com). Released under the MIT Lic
   [aria]: https://github.com/aredridel
   [leejay]: https://github.com/ljxia
   [drew]: https://github.com/drewtempelmeyer
-
+  [http]: http://localhost:1080/
+  [smtp]: smtp://localhost:1025

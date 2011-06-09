@@ -70,5 +70,5 @@ app.post '/download/:id', (req,res) ->
 if !module.parent
   bayeux.attach app
   app.listen 1080
-  console.log "Express server listening on port %d", app.address().port
+  console.log "Kyatchi web interface started on port %d", app.address().port
   
