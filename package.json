@@ -1,0 +1,13 @@
+{
+  "name"         : "kyatchi",
+  "version"      : "0.0.1",
+  "description"  : "Catch the Mail!",
+  "keywords"     : ["smtp", "email", "mail", "development"],
+  "homepage"     : "https://github.com/pcrawfor/coffeeq",
+  "author"       : "Haris Amin <aminharis7@gmail.com> (http://github.com/hamin)",  
+  "directories"  : {"lib"  : "./lib"},
+  "bin"          : "./bin/kyatchi.js",
+  "repository"   : {"type" : "git",  "url": "https://github.com/hamin/kyatchi.git"},
+  "dependencies" : {"coffee-script": ">=1.1.1", "express": ">= 2.3.10", "faye": ">=0.6","smtp": ">= 0.1.0"},
+  "engines"      : {"node" : ">= 0.4.7"}
+}

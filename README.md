@@ -60,7 +60,7 @@ I was surprised how quickly I was able to get Kyatchi up and running. We definit
 
 ## Donations
 
-I started this project beacause I've been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of cofee, soda, or some nourishment by [donating via Amazon Payments](donate).
+I started this project because I've been wanting to write something like this for a while, but I am doing this in my free time. If you are so inclined, buy me a cup of coffee, soda, or some nourishment by [donating via Amazon Payments](donate).
 
 ## License
 
