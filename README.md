@@ -1,6 +1,6 @@
 # Kyatchi
 
-![Kyatchi logo](https://github.com/hamin/kyatchi/blob/master/public/images/kyatchi-logo.png)
+![Kyatchi logo](https://github.com/hamin/kyatchi/raw/master/public/images/kyatchi-logo.png)
 
 Kyatchi **_(キャッチ catch)_** is a light NodeJS port of [Mailcatcher][mailcatcher-github]. Kyatchi is written on top of the super simple Sinatra-like web framework for NodeJS, [ExpressJS][expressjs]. The server and client-side javascript is all written in Coffeescript.
 
