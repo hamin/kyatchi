@@ -13,10 +13,17 @@ currentEmail = client.subscribe '/current_email', (message) ->
       .append($('<td/>').text(message.subject))
       .append($('<td/>').text(message.created_at))
 
-$('#messages tr').live 'click', (e) => loadMessage $(e.currentTarget).attr('data-message-id')
+$('#messages tr').live 'click', (e) =>
+  id = $(e.currentTarget).attr('data-message-id')
+  $('.download form input[name*="message-id"]').val id
+  $('.download form').attr 'action', "/download/#{id}"
+  $('.download form input[name*="email"]').val allMessages[id-1].content.source
+  loadMessage $(e.currentTarget).attr('data-message-id')
   
 $('#message .views .tab').live 'click', (e) =>
   loadMessageBody $('#messages tr.selected').attr('data-message-id'), $(e.currentTarget).attr 'data-message-format'
+
+$('#message .download a').live 'click', (e) => $('.download form').submit()
   
 $('nav.app .clear a').live 'click', (e) =>
   if confirm "You will lose all your received messages.\n\nAre you sure you want to clear all messages?"
@@ -41,7 +48,7 @@ loadMessage = (id) ->
     $("#message .views .tab.selected").removeClass "selected"
     $("#message .views .tab:visible:first").addClass "selected"
   
-  $('#message .download a').attr 'href', "download/#{id}?email=#{allMessages[selectedIndex].content.source}"
+  # $('#message .download a').attr 'href', "download/#{id}?email=#{allMessages[selectedIndex].content.source}"
   loadMessageBody()
 
 loadMessageBody = (id,format) ->

@@ -44,7 +44,7 @@ smtp.createServer (connection) ->
         content: {
             plain: parsedEmail.body[1].body[0].content,
             html: parsedEmail.body[2].body[0].content,
-            source: emailContent
+            source: parser.content
           }
       }
       
@@ -58,11 +58,13 @@ console.log "SMTP server running on port 1025"
 
 app.get '/', (req,res) -> res.render 'index', title: 'Kyatchi - Catch the Mail!'
 
-app.get '/download/:id', (req,res) ->
-  console.log req.params
-  email = req.params.email
+app.post '/download/:id', (req,res) ->
+  console.log req.body
+  console.log req
+  # email = req.query.email
+  # email = "foobar is cool"
   
-  res.send email, {"content-type": "message/rfc822"}, 200
+  res.send req.body.email, {"content-type": "message/rfc822"}, 200
   
 # Only listen on $ node app.coffee
 if !module.parent
