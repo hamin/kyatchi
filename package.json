@@ -1,6 +1,6 @@
 {
   "name"         : "kyatchi",
-  "version"      : "0.0.1",
+  "version"      : "0.0.2",
   "description"  : "Catch the Mail!",
   "keywords"     : ["smtp", "email", "mail", "development"],
   "homepage"     : "https://github.com/hamin/kyatchi",
