@@ -2,6 +2,7 @@ express = require 'express'
 faye = require 'faye'
 smtp = require 'smtp/lib/smtp'
 em_parse = require './lib/parser_email'
+growl = require('growl')
 
 app = module.exports = express.createServer()
 
@@ -48,11 +49,21 @@ smtp.createServer (connection) ->
           }
       }
       
+      osNotify parsedEmail.header.subject.value
       bayeux.getClient().publish '/current_email', currentEmail
       message.accept()
 .listen(1025)
 
 console.log "SMTP server running on port 1025"
+
+# OS Notifications
+osNotify = (messageTitle) ->
+  if require('os').type() is "Darwin"
+    growl.notify 'Kyatchi caught the mail!', {title: messageTitle, image: 'public/images/kyatchi-logo.png'}
+  else
+    console.log 'Growl or Libnotify were not found!'
+
+
 
 # Routes
 
