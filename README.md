@@ -56,7 +56,7 @@ I was surprised how quickly I was able to get Kyatchi up and running. We definit
 * [Samuel Cochran][sam] - Thanks for writing and open sourcing [Mailcatcher][mailcatcher-github]. It was definitely the inspiration I needed. (Hope you don't mind me borrowing your styling :) )
 * [Aria Stewart][aria] - Thanks for your awesome and simple [SMTP library][smtp-lib]. And thanks for suggesting the name for this project :)
 * [Leejay (Liangjie Xia)][leejay] - Thanks for helping me debug some of the smtp parsing
-* [Drew Tempelmeyer] - Thanks for the awesome logo!
+* [Drew Tempelmeyer][drew] - Thanks for the awesome logo!
 
 ## Donations
 
