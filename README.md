@@ -15,6 +15,7 @@ Kyatchi also sends new messages to the web interface through [WebSockets][websoc
 * Catches all mail and stores it for display.
 * Shows HTML, Plain Text and Source version of messages, as applicable.
 * Mail appears instantly **on any browser**.
+* [Growl][growl] notifications for Mac OS X and Gnome notifications with [Libnotify][libnotify]
 * Runs as a daemon run in the background.
 * Written super-simply in on top of [ExpressJS][expressjs] via Coffeescript, very easy to change.
 
@@ -47,7 +48,6 @@ Doesn't matter what programming language/framework you're using. If it uses smtp
 * Fix Email download, currently line breaks aren't being persisted
 * Add support for Attachments
 * Add ability to specify smtp and web interface ports through command line interface
-* Growl support.
 
 ## Thanks
 
@@ -80,4 +80,6 @@ Copyright (c) 2011 Haris Amin (aminharis7@gmail.com). Released under the MIT Lic
   [drew]: https://github.com/drewtempelmeyer
   [http]: http://localhost:1080/
   [smtp]: smtp://localhost:1025
+  [growl]: http://growl.info/
+  [libnotify]: http://developer.gnome.org/libnotify/
   [donate]: http://hamin.github.com/kyatchi/#donate
