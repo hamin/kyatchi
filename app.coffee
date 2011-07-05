@@ -43,11 +43,7 @@ smtp.createServer (connection) ->
         to: parsedEmail.header.to.value, 
         subject: parsedEmail.header.subject.value, 
         created_at: parsedEmail.header.date.value,
-        content: {
-            plain: parsedEmail.body[1].body[0].content,
-            html: parsedEmail.body[2].body[0].content,
-            source: parser.content
-          }
+        content: setMessageContent parsedEmail, parser
       }
       
       osNotify parsedEmail.header.subject.value
@@ -57,6 +53,13 @@ smtp.createServer (connection) ->
 
 console.log "SMTP server running on port 1025"
 
+# Handle Email body properly with respect to content-type
+setMessageContent = (email, emailParser) ->
+  if email.header['content-type'].value is ('multipart/alternative' or 'multipart/mixed')
+    { plain: email.body[1].body[0].content, html: email.body[2].body[0].content, source: emailParser.content }
+  else
+    { plain: email.body[0].content, html: email.body[0].content, source: emailParser.content }
+    
 # OS Notifications
 osNotify = (messageTitle) ->
   if require('os').type() is "Darwin"
