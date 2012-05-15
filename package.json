@@ -8,6 +8,15 @@
   "directories"  : {"lib"  : "./lib"},
   "scripts"      : { "start" : "coffee app.coffee" },
   "repository"   : {"type" : "git",  "url": "https://github.com/hamin/kyatchi.git"},
-  "dependencies" : {"coffee-script": ">=1.1.1", "express": ">= 2.3.10", "jade": ">= 0.12.0", "faye": ">=0.6","smtp": ">= 0.1.4", "growl": ">=1.1.0","libnotify": ">=1.0.2"},
+  "dependencies" : {
+    "coffee-script": ">=1.1.1",
+    "express": ">= 2.3.10",
+    "jade": ">= 0.12.0",
+    "faye": ">=0.6",
+    "smtp": ">= 0.1.4",
+    "growl": ">=1.1.0",
+    "libnotify": ">=1.0.2",
+    "optimist": ">=0.3.4"
+    },
   "engines"      : {"node" : ">= 0.4.7"}
 }

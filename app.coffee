@@ -4,6 +4,33 @@ smtp = require 'smtp/lib/smtp'
 em_parse = require './lib/parser_email'
 growl = require 'growl'
 libnotify = require 'libnotify'
+optimist = require 'optimist'
+
+argv = optimist.usage('Kyatchi - Catch the Mail!', {
+  'silent':{
+    description: 'Turns off OS notifications for incoming emails (Growl/LibNotify)',
+    required: false,
+    boolean: true,
+    short: 's',
+    alias: 's'
+  }
+}).argv
+
+
+optimist.showHelp();
+
+# var argv = optimist.usage('This is my awesome program', {
+#   'about': {
+#     description: 'Provide some details about the author of this program',
+#     required: true,
+#     short: 'a',
+#   },
+#   'info': {
+#     description: 'Provide some information about the node.js agains!!!!!!',
+#     boolean: true,
+#     short: 'i'
+#   }
+# }).argv;
 
 app = module.exports = express.createServer()
 
@@ -46,7 +73,7 @@ smtp.createServer (connection) ->
         content: setMessageContent parsedEmail, parser
       }
       
-      osNotify parsedEmail.header.subject.value
+      osNotify parsedEmail.header.subject.value unless argv.silent
       bayeux.getClient().publish '/current_email', currentEmail
       message.accept()
 .listen(1025)
