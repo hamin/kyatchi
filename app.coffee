@@ -7,6 +7,20 @@ libnotify = require 'libnotify'
 optimist = require 'optimist'
 
 argv = optimist.usage('Kyatchi - Catch the Mail!', {
+  'web':{
+    description: 'Web interface for viewing the incoming emails',
+    required: false,
+    default: 1080,
+    short: 'w',
+    alias: 'w'
+  },
+  'mail':{
+    description: 'SMTP Mail Server for incoming emails',
+    required: false,
+    default: 1025,
+    short: 'm',
+    alias: 'm'
+  },
   'silent':{
     description: 'Turns off OS notifications for incoming emails (Growl/LibNotify)',
     required: false,
@@ -18,19 +32,6 @@ argv = optimist.usage('Kyatchi - Catch the Mail!', {
 
 
 optimist.showHelp();
-
-# var argv = optimist.usage('This is my awesome program', {
-#   'about': {
-#     description: 'Provide some details about the author of this program',
-#     required: true,
-#     short: 'a',
-#   },
-#   'info': {
-#     description: 'Provide some information about the node.js agains!!!!!!',
-#     boolean: true,
-#     short: 'i'
-#   }
-# }).argv;
 
 app = module.exports = express.createServer()
 
@@ -76,9 +77,9 @@ smtp.createServer (connection) ->
       osNotify parsedEmail.header.subject.value unless argv.silent
       bayeux.getClient().publish '/current_email', currentEmail
       message.accept()
-.listen(1025)
+.listen(argv.mail)
 
-console.log "SMTP server running on port 1025"
+console.log "SMTP server running on port #{argv.mail}"
 
 # Handle Email body properly with respect to content-type
 setMessageContent = (email, emailParser) ->
@@ -113,6 +114,6 @@ app.post '/download/:id', (req,res) ->
 # Only listen on $ node app.coffee
 if !module.parent
   bayeux.attach app
-  app.listen 1080
-  console.log "Kyatchi web interface started on port %d", app.address().port
+  app.listen argv.web
+  console.log "Kyatchi web interface started on port #{app.address().port} - http://#{app.address().address}:#{app.address().port}"
   

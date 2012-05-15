@@ -1,4 +1,4 @@
-client = new Faye.Client("http://127.0.0.1:1080/kyatchi")
+client = new Faye.Client('/kyatchi')
 allMessages = []
 messageCount = 0
 
